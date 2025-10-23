@@ -17,7 +17,7 @@ import { getSubCategoryBySlug } from "@/actions/get-subcategory";
 import { getLocationGroups } from "@/actions/get-location-group";
 import { getBrands } from "@/actions/get-brands";
 
-// export const revalidate = 600;
+export const revalidate = 600;
 
 async function withRetry<T>(
   fn: () => Promise<T>,

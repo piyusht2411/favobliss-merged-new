@@ -1,12 +1,13 @@
 import { Product, ProductApiResponse } from "@/types";
 import axios from "axios";
+import { notFound } from "next/navigation";
 
 const URL = process.env.NEXT_PUBLIC_STORE_URL;
 const STORE_ID = process.env.NEXT_PUBLIC_STORE_ID;
 
 export const getProductById = async (id: string): Promise<Product> => {
   const res = await fetch(`${URL}/api/admin/${STORE_ID}/products/${id}`, {
-    cache: "no-store",
+    next: { revalidate: 600 },
   });
   return res.json();
 };
@@ -16,10 +17,11 @@ export const getProductBySlug = async (
 ): Promise<ProductApiResponse> => {
   const res = await fetch(
     `${URL}/api/admin/${STORE_ID}/products?slug=${slug}`,
-    { cache: "no-store" }
+    { next: { revalidate: 600 } }
   );
   if (!res.ok) {
-    throw new Error("Product not found");
+    notFound();
+    // throw new Error("Product not found");
   }
   return res.json();
 };

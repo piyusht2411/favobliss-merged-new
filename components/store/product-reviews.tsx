@@ -545,7 +545,7 @@ export const ProductReviews = (props: ProductReviewsProps) => {
                     <div className="mt-4">
                       {(review.images.length > 0 ||
                         review.videos.length > 0) && (
-                        <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
+                        <div className="flex gap-2 mb-3 overflow-x-auto pb-1 max-w-[250px]">
                           {review.images.map((image, index) => (
                             <img
                               key={`image-${index}`}

@@ -11,11 +11,11 @@ export const getLocations = async (
   if (pincode) {
     res = await fetch(
       `${URL}/api/admin/${STORE_ID}/location/pincode=${pincode}`,
-      { cache: "no-store" }
+      { next: { revalidate: 600 } }
     );
   } else {
     res = await fetch(`${URL}/api/admin/${STORE_ID}/location`, {
-      cache: "no-store",
+      next: { revalidate: 600 },
     });
   }
 
@@ -26,7 +26,9 @@ export const getLocations = async (
 };
 
 export const getLocationById = async (id: string): Promise<Location> => {
-  const res = await fetch(`${URL}/api/admin/${STORE_ID}/location/${id}`);
+  const res = await fetch(`${URL}/api/admin/${STORE_ID}/location/${id}`, {
+    next: { revalidate: 600 },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch locations");

@@ -27,7 +27,7 @@ import BannerImage from "@/components/store/BannerImage";
 import HeroSliderMobile from "@/components/store/billboardMobile";
 import Head from "next/head";
 
-// export const revalidate = 600;
+export const revalidate = 600;
 
 const LandingPage = async ({ params }: { params: { storeId: string } }) => {
   const [
@@ -50,42 +50,42 @@ const LandingPage = async ({ params }: { params: { storeId: string } }) => {
 
   return (
     <>
-    {/* <Head>
+      <Head>
         <link
           rel="preload"
           href="/assets/hero/banner-boat.jpg"
           as="image"
           fetchPriority="high"
         />
-      </Head> */}
+      </Head>
       <div className="bg-[#f8f8f8] min-h-screen">
-      <HeroSlider />
-      <HeroSliderMobile />
-      <CategorySlider categories={categories} />
-      <GalleryImage />
-      <Container>
-        <div className="space-y-10 pb-20 mt-8">
-          <div className="flex flex-col gap-y-4 md:gap-y-12 px-4 sm:px-6 lg:px-8">
-            <BannerProductSection
-              locationGroups={locationGroups}
-              products={brandProds}
-              bannerImage="/assets/gaming.jpg"
-            />
-            <RecentlyViewed locationGroups={locationGroups} />
-            <ProductList
-              title="Latest Launches"
-              data={allProducts}
-              locationGroups={locationGroups}
-              showViewAll={true}
-              link="/latest-launches?page=1"
-            />
-            <PromotionalBanner
-              data={featured}
-              locationGroups={locationGroups}
-              categories={brandCategory}
-            />
-            <FourImageGrid />
-            {/* <div className="space-y-4 md:space-y-16">
+        <HeroSlider />
+        <HeroSliderMobile />
+        <CategorySlider categories={categories} />
+        <GalleryImage />
+        <Container>
+          <div className="space-y-10 pb-20 mt-8">
+            <div className="flex flex-col gap-y-4 md:gap-y-12 px-4 sm:px-6 lg:px-8">
+              <BannerProductSection
+                locationGroups={locationGroups}
+                products={brandProds}
+                bannerImage="/assets/gaming.jpg"
+              />
+              <RecentlyViewed locationGroups={locationGroups} />
+              <ProductList
+                title="Latest Launches"
+                data={allProducts}
+                locationGroups={locationGroups}
+                showViewAll={true}
+                link="/latest-launches?page=1"
+              />
+              <PromotionalBanner
+                data={featured}
+                locationGroups={locationGroups}
+                categories={brandCategory}
+              />
+              <FourImageGrid />
+              {/* <div className="space-y-4 md:space-y-16">
               <Image
                 src="/assets/banner.jpg"
                 alt="Image"
@@ -94,7 +94,7 @@ const LandingPage = async ({ params }: { params: { storeId: string } }) => {
                 className="object-cover bg-blend-color-burn"
               />
             </div> */}
-            {/* <LandingPageSection
+              {/* <LandingPageSection
               title="Home Appliances"
               items={applianceItems}
               viewAllLink="/category/home-appliances?page=1"
@@ -105,32 +105,35 @@ const LandingPage = async ({ params }: { params: { storeId: string } }) => {
               data={homeApplicance || []}
               locationGroups={locationGroups}
             /> */}
-            <HomeAppliance
-              title="Home Appliances"
-              categoryId="6843219ac338ba8cc9db1e72"
-              locationGroups={locationGroups}
-              link="/category/home-appliances?page=1"
-              items={applianceItems}
-              className="bg-[#e1e8d4]"
-            />
-            <HomeAppliance
-              title="Kitchen Appliances"
-              categoryId="684321aac338ba8cc9db1e73"
-              locationGroups={locationGroups}
-              link="/category/kitchen-appliances?page=1"
-              items={kitchenAppliance}
-              className="bg-[#c5aa94]"
-            />
-            <BannerImage imageUrl="/assets/banner-boat.jpg" altText="banner" />
-            <HomeAppliance
-              title=""
-              categoryId="684321d4c338ba8cc9db1e75"
-              locationGroups={locationGroups}
-              link="/category/kitchen-appliances?page=1"
-              items={brandItems}
-              className="bg-[#c5aa94]"
-            />
-            {/* <LandingPageSection
+              <HomeAppliance
+                title="Home Appliances"
+                categoryId="6843219ac338ba8cc9db1e72"
+                locationGroups={locationGroups}
+                link="/category/home-appliances?page=1"
+                items={applianceItems}
+                className="bg-[#e1e8d4]"
+              />
+              <HomeAppliance
+                title="Kitchen Appliances"
+                categoryId="684321aac338ba8cc9db1e73"
+                locationGroups={locationGroups}
+                link="/category/kitchen-appliances?page=1"
+                items={kitchenAppliance}
+                className="bg-[#c5aa94]"
+              />
+              <BannerImage
+                imageUrl="/assets/banner-boat.jpg"
+                altText="banner"
+              />
+              <HomeAppliance
+                title=""
+                categoryId="684321d4c338ba8cc9db1e75"
+                locationGroups={locationGroups}
+                link="/category/kitchen-appliances?page=1"
+                items={brandItems}
+                className="bg-[#c5aa94]"
+              />
+              {/* <LandingPageSection
               title="Kitchen Appliances"
               items={kitchenAppliance}
               viewAllLink="/category/kitchen-appliances?page=1"
@@ -141,32 +144,32 @@ const LandingPage = async ({ params }: { params: { storeId: string } }) => {
               data={kitchen || []}
               locationGroups={locationGroups}
             /> */}
-            {/* <BestOfProduct
+              {/* <BestOfProduct
               products={brandProducts || []}
               title="Best of Apple"
               subtitle="Save up to ₹10,000 instantly on eligible products using ICICI, Axis or Kotak Mahindra Bank Credit Cards | Exchange bonus upto ₹6,000 on iPhone"
               offer="Benefit with No Cost EMI schemes"
             /> */}
-            <PremiumProductsSection
-              products={premiumProducts}
-              backgroundColor="#534747"
-            />
-            <ProductList
-              title="Favobliss's Choice"
-              data={featured || []}
-              locationGroups={locationGroups}
-              showViewAll={true}
-              link="/favobliss-choice?page=1"
-            />
-            <BrandList brands={Array.isArray(brands) ? brands : [brands]} />
-            <HotDealBanner />
-            {/* <LatestLaunches /> */}
-            <FeatureHighlights />
+              <PremiumProductsSection
+                products={premiumProducts}
+                backgroundColor="#534747"
+              />
+              <ProductList
+                title="Favobliss's Choice"
+                data={featured || []}
+                locationGroups={locationGroups}
+                showViewAll={true}
+                link="/favobliss-choice?page=1"
+              />
+              <BrandList brands={Array.isArray(brands) ? brands : [brands]} />
+              <HotDealBanner />
+              {/* <LatestLaunches /> */}
+              <FeatureHighlights />
+            </div>
           </div>
-        </div>
-      </Container>
-    </div></>
-    
+        </Container>
+      </div>
+    </>
   );
 };
 
