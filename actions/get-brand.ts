@@ -10,7 +10,6 @@ export const getBrandBySlug = async (slug: string): Promise<Brand> => {
   });
   if (!res.ok) {
     notFound();
-    // throw new Error("Product not found");
   }
   return res.json();
 };

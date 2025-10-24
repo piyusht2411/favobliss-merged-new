@@ -7,18 +7,9 @@ import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { getSubCategoryById } from "@/actions/get-subcategory";
 import { VerifiedBadgePremium } from "./verified-badge";
+import { Review } from "@/types";
+import { getReviews } from "@/actions/get-review";
 
-interface Review {
-  id: string;
-  userName: string;
-  rating: number;
-  text: string;
-  images: { url: string }[];
-  videos: { url: string }[];
-  createdAt: string;
-  userId: string;
-  categoryRatings: { categoryName: string; rating: number }[];
-}
 
 interface ProductReviewsProps {
   productId: string;
@@ -129,14 +120,14 @@ export const ProductReviews = (props: ProductReviewsProps) => {
   const fetchReviews = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_STORE_URL}/api/admin/684315296fa373b59468f387/products/${productId}/reviews?page=1&limit=100`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch reviews");
-      }
-      const data = await response.json();
-      const sortedReviews = data.sort((a: Review, b: Review) => {
+      // const response = await fetch(
+      //   `${process.env.NEXT_PUBLIC_STORE_URL}/api/admin/684315296fa373b59468f387/products/${productId}/reviews?page=1&limit=100`
+      // );
+      // if (!response.ok) {
+      //   throw new Error("Failed to fetch reviews");
+      // }
+       const data = await getReviews(productId);
+     const sortedReviews = data.sort((a: Review, b: Review) => {
         if (b.rating !== a.rating) {
           return b.rating - a.rating;
         }

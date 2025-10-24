@@ -303,6 +303,18 @@ export interface VariantSummary {
   slug: string;
   color: string | null;
   size: string | null;
-  sizeId:string | null;
+  sizeId: string | null;
   colorId: string | null;
+}
+
+export interface Review {
+  id: string;
+  userName: string;
+  rating: number;
+  text: string;
+  images: { url: string }[];
+  videos: { url: string }[];
+  createdAt: string;
+  userId: string;
+  categoryRatings: { categoryName: string; rating: number }[];
 }
